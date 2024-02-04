@@ -1,14 +1,9 @@
-package com.spring.domain;
+package com.spring.webapp.domain;
 
+import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
-
-import org.hibernate.annotations.ManyToAny;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Author {
@@ -19,7 +14,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> getBook;
+    private Set<Book> getBook = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -45,7 +40,7 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public Set<Book> getGetBook() {
+    public Set<Book> getBooks() {
         return getBook;
     }
 
